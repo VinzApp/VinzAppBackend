@@ -1,6 +1,4 @@
 import sqlite3 from 'sqlite3';
-import path from 'path';
-import { callbackify } from 'util';
 
 export default class Database {
     db: sqlite3.Database;
@@ -10,8 +8,8 @@ export default class Database {
         this.db = new sqlite3.Database('src/db/meals.sqlite');
     }
 
-    getTodaysMeals(callback: any) {
-        this.db.all('SELECT * FROM Meals', (err: any, res: any) => {
+    getTodaysMeals(date: string, callback: any) {
+        this.db.all(`SELECT * FROM Meals WHERE date="${date}"`, (err: any, res: any) => {
             if(err) {
                 console.log('Error: ' + err);
             }

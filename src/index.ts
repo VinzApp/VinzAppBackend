@@ -12,7 +12,7 @@ app.get('/', (req: express.Request, res: express.Response) => {
 
 app.post('/nextMeal', (req: express.Request, res: express.Response) => {
     const db = new Database();
-    db.getTodaysMeals((response: any) => {
+    db.getTodaysMeals(req.body.date, (response: any) => {
         res.send(response);
         console.log('Send');
     });
