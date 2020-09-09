@@ -12,9 +12,8 @@ app.get('/', (req: express.Request, res: express.Response) => {
 
 app.post('/nextMeal', (req: express.Request, res: express.Response) => {
     const db = new Database();
-    db.getTodaysMeals(req.body.date, (response: any) => {
+    db.getTodaysMeals(req.body.date, (response: string) => {
         res.send(response);
-        console.log('Send');
     });
 });
 
