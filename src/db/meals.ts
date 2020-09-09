@@ -2,7 +2,7 @@ import sqlite3 from 'sqlite3';
 
 type CallbackFunc = (s: string) => void;
 
-export default class Database {
+export default class MealsDatabase {
     db: sqlite3.Database;
 
     constructor() {
