@@ -12,6 +12,7 @@ export default {
         typescript()
     ],
     external: [
-        'express'
+        'express',
+        'sqlite3'
     ]
 };
