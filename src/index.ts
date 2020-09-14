@@ -1,6 +1,7 @@
 import express from 'express';
 import MealsDatabase from './db/meals';
 import TimetableDatabase from './db/timetable';
+import EventsDatabase from './db/events';
 
 const app = express();
 const port = process.env.PORT || 3000;
@@ -21,6 +22,13 @@ app.post('/nextMeal', (req: express.Request, res: express.Response) => {
 app.post('/todaysTimetable', (req: express.Request, res: express.Response) => {
     const db = new TimetableDatabase();
     db.getTodaysTimetable(req.body.day, (response: string) => {
+        res.send(response);
+    });
+});
+
+app.get('/getEvents', (req: express.Request, res: express.Response) => {
+    const db = new EventsDatabase();
+    db.getEvents((response: string) => {
         res.send(response);
     });
 });
