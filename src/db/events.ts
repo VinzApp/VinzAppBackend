@@ -18,4 +18,12 @@ export default class EventsDatabase {
         });
     }
 
+    createEvent(expirationDate: string, text: string): void {
+        this.db.run(`INSERT INTO Events VALUES ('${expirationDate}', '${text}');`, (err: string) => {
+            if(err){
+                console.log('Error: ' + err);
+            }
+        });
+    }
+
 }
