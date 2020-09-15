@@ -18,7 +18,4 @@ export default class EventsDatabase {
         });
     }
 
-    createEvent(expirationDate: string, text: string): void {
-
-    }
 }
