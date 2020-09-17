@@ -2,11 +2,14 @@ import express from 'express';
 import MealsDatabase from './db/meals';
 import TimetableDatabase from './db/timetable';
 import EventsDatabase from './db/events';
+import swaggerUi from 'swagger-ui-express';
+import openAPIDocumentation from '../docs/doc';
 
 const app = express();
 const port = process.env.PORT || 3000;
 
 app.use(express.json());
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(openAPIDocumentation));
 
 
 app.get('/', (req: express.Request, res: express.Response) => {
