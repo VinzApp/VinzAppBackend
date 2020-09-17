@@ -1,8 +1,8 @@
 const api: any = {
   openapi: '3.0.1',
   info: {
-    title: 'defaultTitle',
-    description: 'defaultDescription',
+    title: 'VinzApp',
+    description: 'Backend for the Vinzentinum App',
     version: '1.0.0'
   },
   servers: [
@@ -49,7 +49,11 @@ const api: any = {
                     }
                   }
                 },
-                examples: {}
+                examples: {
+                    '0': {
+                        value: '[\n    {\n        "day": 0,\n        "starttime": "13:20",\n        "endtime": "13:40",\n        "name": "Mittagessen",\n        "priority": 0\n    },\n    {\n        "day": 0,\n        "starttime": "19:30",\n        "endtime": "22:00",\n        "name": "Freizeit",\n        "priority": 0\n    }...\n]'
+                    }
+                }
               }
             }
           }
@@ -68,7 +72,7 @@ const api: any = {
     },
     '/nextMeal': {
       post: {
-        description: 'Auto generated using Swagger Inspector',
+        description: 'Get the meals of the supplied date as an array',
         requestBody: {
           content: {
             'application/json': {
