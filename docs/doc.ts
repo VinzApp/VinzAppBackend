@@ -35,7 +35,7 @@ const api: any = {
         },
         responses: {
           '200': {
-            description: 'Auto generated using Swagger Inspector',
+            description: 'Returns an array with the timeslices',
             content: {
               'application/json; charset=utf-8': {
                 schema: {
@@ -94,7 +94,7 @@ const api: any = {
         },
         responses: {
           '200': {
-            description: 'Auto generated using Swagger Inspector',
+            description: 'Returns an array with the meals of the day',
             content: {
               'application/json; charset=utf-8': {
                 schema: {
