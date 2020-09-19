@@ -98,9 +98,16 @@ const api: any = {
             content: {
               'application/json; charset=utf-8': {
                 schema: {
-                  type: 'string'
+                  type: 'array',
+                  items: {
+                    $ref: '#/components/schemas/meal'
+                  }
                 },
-                examples: {}
+                examples: {
+                    '0': {
+                        value: '[\n    {\n        "date": "01.09.2020",\n        "time": 1,\n        "meal": "Schnitzel mit Pommes; Veggie-shit; Halbgefrorenes;"\n    },\n    {\n        "date": "01.09.2020",\n        "time": 2,\n        "meal": "test"\n    }\n]'
+                    }
+                }
               }
             }
           }
@@ -119,16 +126,23 @@ const api: any = {
     },
     '/getEvents': {
       get: {
-        description: 'Auto generated using Swagger Inspector',
+        description: 'Returns all the events',
         responses: {
           '200': {
-            description: 'Auto generated using Swagger Inspector',
+            description: 'Successful response',
             content: {
               'application/json; charset=utf-8': {
                 schema: {
-                  type: 'string'
+                  type: 'array',
+                  items: {
+                      $ref: '#/components/schemas/event'
+                  }
                 },
-                examples: {}
+                examples: {
+                    '0': {
+                        value: '[\n    {\n        "expiration": "20.09.2020",\n        "text": "Messe ist um 24:00"\n    },\n    {\n        "expiration": "01.09.2020",\n        "text": "Ausgang bis um 24:00"\n    }\n]'
+                    }
+                }
               }
             }
           }
@@ -148,19 +162,21 @@ const api: any = {
     '/createEvent': {
       post: {
         description: 'Auto generated using Swagger Inspector',
+        parameters: [
+          {
+            name: 'expiration',
+            in: 'body',
+            description: 'Expiration date on which the event will be removed',
+            required: true,
+            type: 'string',
+            collectionFormat: "multi"
+          }
+        ],
         requestBody: {
           content: {
             'application/json': {
               schema: {
-                type: 'object',
-                properties: {
-                  expiration: {
-                    type: 'string'
-                  },
-                  text: {
-                    type: 'string'
-                  }
-                }
+                  $ref: '#/components/schemas/event'
               },
               examples: {
                 '0': {
@@ -172,15 +188,7 @@ const api: any = {
         },
         responses: {
           '200': {
-            description: 'Auto generated using Swagger Inspector',
-            content: {
-              'text/plain; charset=utf-8': {
-                schema: {
-                  type: 'string'
-                },
-                examples: {}
-              }
-            }
+            description: 'Event successfully created',
           }
         },
         servers: [
@@ -198,6 +206,36 @@ const api: any = {
   },
   components: {
     schemas: {
+      meal: {
+        type: 'object',
+        properties: {
+            date: {
+                type: 'string',
+                description: 'The date this meal is going to be served, Attention pad with zero!'
+            },
+            time: {
+                type: 'integer',
+                description: 'Tells which meal of the day it is, 1 = lunch, 2 = dinner'
+            },
+            meal: {
+                type: 'string',
+                description: 'Specifies the meal, separated by semi-colon, normal; veggie; dessert'
+            }
+        }
+      },
+      event: {
+        type: 'object',
+        properties: {
+            expiration: {
+                type: 'string',
+                description: 'The expiration date, after that the event will be removed'
+            },
+            text: {
+                type: 'string',
+                description: 'Describes the event'
+            }
+        } 
+      },
       timeSlice: {
         type: 'object',
         properties: {
