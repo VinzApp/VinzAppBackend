@@ -13,6 +13,7 @@ export default {
     ],
     external: [
         'express',
-        'sqlite3'
+        'sqlite3',
+        'swagger-ui-express'
     ]
 };
