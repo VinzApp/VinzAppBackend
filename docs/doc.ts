@@ -1,3 +1,4 @@
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 const api: any = {
   openapi: '3.0.1',
   info: {
