@@ -14,6 +14,7 @@ export default {
     external: [
         'express',
         'sqlite3',
-        'swagger-ui-express'
+        'swagger-ui-express',
+        'tslib'
     ]
 };
