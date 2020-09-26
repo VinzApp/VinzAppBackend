@@ -106,7 +106,7 @@ const api: any = {
                 },
                 examples: {
                     '0': {
-                        value: '[\n    {\n        "date": "01.09.2020",\n        "time": 1,\n        "meal": "Schnitzel mit Pommes; Veggie-shit; Halbgefrorenes;"\n    },\n    {\n        "date": "01.09.2020",\n        "time": 2,\n        "meal": "test"\n    }\n]'
+                        value: '[\n    {\n        "date": "01.09.2020",\n        "time": 1,\n        "normal": "Schnitzel mit Pommes; Halbgefrorenes",\n        "veggie": "Tofu"\n    },\n    {\n        "date": "01.09.2020",\n        "time": 2,\n        "normal": "test",\n        "veggie": "Veggie-Test"\n    }\n]'
                     }
                 }
               }
@@ -218,9 +218,13 @@ const api: any = {
                 type: 'integer',
                 description: 'Tells which meal of the day it is, 1 = lunch, 2 = dinner'
             },
-            meal: {
+            normal: {
                 type: 'string',
-                description: 'Specifies the meal, separated by semi-colon, normal; veggie; dessert'
+                description: 'Specifies the meal, separated by semi-colon, normal; dessert'
+            },
+            veggie: {
+                type: 'string',
+                description: 'Specifies the meal for the vegetarians, for dessert look in normal after semicolon'
             }
         }
       },
