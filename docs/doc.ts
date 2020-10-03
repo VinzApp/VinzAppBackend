@@ -176,7 +176,7 @@ const api: any = {
                 },
                 examples: {
                     '0': {
-                        value: '[\n    {\n        "date": "04.10.2020",\n        "personel1": "Max Mustermann",\n        "personel2": "Max Mustermann2"\n    }\n]'
+                        value: '[\n    {\n        "date": "04.10.2020",\n        "person1": "Max Mustermann",\n        "person2": "Max Mustermann2"\n    }\n]'
                     }
                 }
               }
