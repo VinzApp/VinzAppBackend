@@ -4,6 +4,7 @@ import TimetableDatabase from './db/timetable';
 import EventsDatabase from './db/events';
 import swaggerUi from 'swagger-ui-express';
 import openAPIDocumentation from '../docs/doc';
+import RegistrationDatabase from './db/registration';
 
 const app = express();
 const port = process.env.PORT || 3000;
@@ -42,6 +43,13 @@ app.post('/createEvent', (req: express.Request, res: express.Response) => {
     const db = new EventsDatabase();
     db.createEvent(req.body.expiration, req.body.text);
     res.sendStatus(200);
+});
+
+app.get('/getRegistration', (req: express.Request, res: express.Response) => {
+    const db = new RegistrationDatabase();
+    db.getRegistrations((response: string) => {
+        res.send(response);
+    });
 });
 
 app.listen(port, () => {
