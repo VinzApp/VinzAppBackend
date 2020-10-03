@@ -160,6 +160,41 @@ const api: any = {
         }
       ]
     },
+    '/getRegistration': {
+      get: {
+        description: 'Returns the date of the next Sunday and the Personnel by whom it is to register, return array has always only one element',
+        responses: {
+          '200': {
+            description: 'Successful response',
+            content: {
+              'application/json; charset=utf-8': {
+                schema: {
+                  type: 'array',
+                  items: {
+                      $ref: '#/components/schemas/registration'
+                  }
+                },
+                examples: {
+                    '0': {
+                        value: '[\n    {\n        "date": "04.10.2020",\n        "personel1": "Max Mustermann",\n        "personel2": "Max Mustermann2"\n    }\n]'
+                    }
+                }
+              }
+            }
+          }
+        },
+        servers: [
+          {
+            url: 'http://185.234.72.120:18000'
+          }
+        ]
+      },
+      servers: [
+        {
+          url: 'http://185.234.72.120:18000'
+        }
+      ]
+    },
     '/createEvent': {
       post: {
         description: 'Auto generated using Swagger Inspector',
@@ -225,6 +260,23 @@ const api: any = {
             veggie: {
                 type: 'string',
                 description: 'Specifies the meal for the vegetarians, for dessert look in normal after semicolon'
+            }
+        }
+      },
+      registration: {
+        type: 'object',
+        properties: {
+            date: {
+                type: 'string',
+                description: 'The date of the next sunday or the next date on which a registration is needed'
+            },
+            person1: {
+                type: 'string',
+                description: 'First registration personnel'
+            },
+            person2: {
+                type: 'string',
+                description: 'Second registration personnel'
             }
         }
       },
