@@ -55,3 +55,17 @@ app.get('/getRegistration', (req: express.Request, res: express.Response) => {
 app.listen(port, () => {
     console.log('Listening on Port: ' + port); 
 });
+
+import http from 'http';
+
+const adminPort = 3001;
+
+const server = http.createServer((req, res) => {
+    res.statusCode = 200;
+    res.setHeader('Content-Type', 'text/plain');
+    res.end('This is the Admin Side!\n');
+});
+
+server.listen(adminPort, () => {
+    console.log(`Server running at http://:${adminPort}/`);
+});
